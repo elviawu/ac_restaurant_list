@@ -1,0 +1,52 @@
+<h1 class="mb-1 restaurant-show-title">推薦新餐廳</h1>
+<div class="container">
+  <form action="/restaurants" method="POST">
+    <div class="mb-3">
+      <label for="name">店名</label>
+      <input type="text" class="form-control" name="name" id="name" placeholder="店名" required>
+    </div>
+    <div class="mb-3">
+      <label for="name_en">英文店名</label>
+      <input type="text" class="form-control" name="name_en" id="name_en" placeholder="英文店名" required>
+    </div>
+    <div class="mb-3">
+      <label for="category">類別</label>
+      <input list="categories" class="form-control" name="category" id="category" placeholder="美食類別" required>
+      <datalist id="categories">
+        <option>義式餐廳</option>
+        <option>美式</option>
+        <option>日本料理</option>
+        <option>中東料理</option>
+        <option>酒吧</option>
+        <option>咖啡</option>
+      </datalist>
+    </div>
+    <div class="mb-3">
+      <label for="image">圖片連結</label>
+      <input type="url" class="form-control" name="image" id="image" placeholder="圖片連結" required>
+    </div>
+    <div class="mb-3">
+      <label for="location">地址</label>
+      <input type="text" class="form-control" name="location" id="location" placeholder="在哪呢" required>
+    </div>
+    <div class="mb-3">
+      <label for="phone">電話</label>
+      <input type="text" class="form-control" name="phone" id="phone" placeholder="請以 XX XXXX XXXX 方式輸入" required>
+    </div>
+    <div class="mb-3">
+      <label for="google_map">Google地圖連結</label>
+      <input type="url" class="form-control" name="google_map" id="google_map" placeholder="Google地圖連結" required>
+    </div>
+    <div class="mb-3">
+      <label for="rating">評分</label>
+      <input type="number" class="form-control" name="rating" id="rating" min="0" max="5" step="0.1"
+        placeholder="最低0分，最高5分..." required>
+    </div>
+    <div class="mb-3">
+      <label for="description">介紹</label>
+      <textarea type="text" class="form-control" name="description" id="description" rows="3" placeholder="談談這個餐廳吧"
+        required></textarea>
+    </div>
+    <button type="submit" class="btn btn-major">新增</button>
+  </form>
+</div>
