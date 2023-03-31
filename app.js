@@ -46,7 +46,7 @@ app.post('/restaurants', (req, res) => {
     .then(() => res.redirect('/'))
     .catch((error) => console.log(error))
 })
-
+// 瀏覽資料細節
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
@@ -54,7 +54,7 @@ app.get('/restaurants/:id', (req, res) => {
     .then((restaurant) => res.render('show', { restaurant: restaurant }))
     .catch(error => console.log(error))
 })
-
+// 修改一筆資料
 app.get('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
@@ -68,6 +68,14 @@ app.post('/restaurants/:id/edit', (req, res) => {
   const restaurant = req.body
   Restaurant.findByIdAndUpdate(id, restaurant)
     .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.log(error))
+})
+// 刪除一筆資料
+app.post('/restaurants/:id/delete', (req, res) => {
+  const id = req.params.id
+  Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
