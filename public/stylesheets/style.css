@@ -50,6 +50,11 @@ header {
   color: white;
 }
 
+.btn-function {
+  /* background-color: #fce2cf; */
+  color: #9b4b4b;
+}
+
 .form-control:focus {
   box-shadow: none;
   border-color: #ced4da;
