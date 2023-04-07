@@ -3,8 +3,9 @@ const app = express()
 const port = 3000
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 const Restaurant = require('./models/restaurant') //載入Restaurant model
-const restaurantList = require('./restaurant.json').results
+
 // 引用 body-parser
 const bodyParser = require('body-parser')
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
@@ -29,6 +30,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   Restaurant.find() //取出Restaurant Model中所有資料
@@ -63,7 +65,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
   const restaurant = req.body
   Restaurant.findByIdAndUpdate(id, restaurant)
@@ -71,7 +73,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 // 刪除一筆資料
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
