@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const Restaurant = require('./models/restaurant') //載入Restaurant model
+const routes = require('./routes')
 
 // 引用 body-parser
 const bodyParser = require('body-parser')
@@ -31,55 +32,8 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
+app.use(routes)
 
-app.get('/', (req, res) => {
-  Restaurant.find() //取出Restaurant Model中所有資料
-    .lean() //把Mongoose的Model物件轉換成乾淨的Javascript資料陣列
-    .then(restaurants => res.render('index', { restaurants: restaurants })) //將資料傳給index樣板
-    .catch(error => console.log(error)) //錯誤處理
-})
-// 新增一筆資料
-app.get('/restaurants/new', (req, res) => {
-  return res.render('new')
-})
-app.post('/restaurants', (req, res) => {
-  const restaurant = req.body
-  Restaurant.create(restaurant)
-    .then(() => res.redirect('/'))
-    .catch((error) => console.log(error))
-})
-// 瀏覽資料細節
-app.get('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
-    .lean()
-    .then((restaurant) => res.render('show', { restaurant: restaurant }))
-    .catch(error => console.log(error))
-})
-// 修改一筆資料
-app.get('/restaurants/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
-    .lean()
-    .then((restaurant) => res.render('edit', { restaurant }))
-    .catch(error => console.log(error))
-})
-
-app.put('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  const restaurant = req.body
-  Restaurant.findByIdAndUpdate(id, restaurant)
-    .then(() => res.redirect(`/restaurants/${id}`))
-    .catch(error => console.log(error))
-})
-// 刪除一筆資料
-app.delete('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  Restaurant.findById(id)
-    .then(restaurant => restaurant.remove())
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
 //搜尋餐廳或類別
 app.get('/search', (req, res) => {
   if (!req.query.keywords) {
