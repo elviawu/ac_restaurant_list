@@ -5,12 +5,12 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 //搜尋餐廳或類別
 router.get('/', (req, res) => {
+  console.log(req.query.keywords)
   if (!req.query.keywords) {
     res.redirect('/')
   }
   const keywords = req.query.keywords
   const keyword = req.query.keywords.trim().toLowerCase()
-
   Restaurant.find({})
     .lean()
     .then(restaurants => {
