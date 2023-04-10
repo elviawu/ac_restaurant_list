@@ -1,9 +1,9 @@
 # 我的餐廳清單
-![markdown](https://img.onl/M4ZjZf "WebPage")
+![markdown](https://raw.githubusercontent.com/elviawu/ac_restaurant_list/main/public/images/restaurant_list_sort.png "WebPage")
 ## 介紹
 紀錄屬於自己的餐廳清單，可以瀏覽、編輯餐廳、利用關鍵字查詢餐廳。
 ## Features功能
-•	查看所有餐廳
+•	查看所有餐廳並按條件排序
 •	進一步點擊餐廳瀏覽詳細資訊
 • 新增、編輯或刪除餐廳資訊
 •	依照餐廳名稱或類別搜尋特定餐廳
@@ -14,6 +14,7 @@
 4.  Body-parser 1.20.2
 5.  dotenv 16.0.3
 6.  mongoose 5.9.7
+7.  method-override 3.0.0
 ## Install安裝與使用
 1.	確認安裝Node.js和npm之後，將專案 clone 到本地
 ```
