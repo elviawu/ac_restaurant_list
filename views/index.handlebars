@@ -19,20 +19,35 @@
 </div>
 <!-- restaurant list -->
 <div class="container mt-5">
-  <form action="/" method="GET">
-    <div class="row col-4 mb-2">
-      <div class="input-group">
-        <!-- sort -->
-        <select name="sort" id="sort" class="form-control form-select" onchange="submit()" value="{{sort}}">
-          <option value="name-asc">店家名稱 ( A > Z )</option>
-          <option value="name-desc">店家名稱 ( Z > A )</option>
-          <option value="rating">評分 ( 高 > 低 )</option>
-          <option value="category">類別</option>
-          <option value="location">地區</option>
-        </select>
-      </div>
+  <div class="d-flex justify-content-between">
+    <div class="col-8">
+      <form action="/" method="GET">
+        <div class="row col-4 mb-2">
+          <div class="input-group">
+            <!-- sort -->
+            <select name="sort" id="sort" class="form-control form-select" onchange="submit()" value="{{sort}}">
+              <option value="name-asc">店家名稱 ( A > Z )</option>
+              <option value="name-desc">店家名稱 ( Z > A )</option>
+              <option value="rating">評分 ( 高 > 低 )</option>
+              <option value="category">類別</option>
+              <option value="location">地區</option>
+            </select>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
+    <div class="col-2">
+      <a class="navbar-brand" href="/restaurants/new">
+        <button class="btn btn-create" type="submit" id="create-button">
+          <h5><i class="fas fa-plus-square fa-lg"></i>
+        新增餐廳</h5>
+        </button>
+      </a>
+    </div>
+    
+  </div>
+  
+  
   <div class="row">
     {{#each restaurants}}
     <div class="col-12 col-sm-6 col-md-4">

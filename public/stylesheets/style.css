@@ -10,8 +10,13 @@ header {
   color: #226089;
 }
 
-.btn-create {
+.btn-nav {
   color: #4592af;
+  background-color: transparent;
+}
+
+.btn-create {
+  color: #666666;
   background-color: transparent;
 }
 
