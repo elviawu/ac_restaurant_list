@@ -9,9 +9,10 @@ router.get('/', (req, res) => {
   if (!req.query.keywords) {
     res.redirect('/')
   }
+  const userId = req.user._id
   const keywords = req.query.keywords
   const keyword = req.query.keywords.trim().toLowerCase()
-  Restaurant.find({})
+  Restaurant.find({userId})
     .lean()
     .then(restaurants => {
       const filterRestaurantsData = restaurants.filter(data => data.name.toLowerCase().includes(keyword) || data.category.toLowerCase().includes(keyword))
