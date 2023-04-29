@@ -5,18 +5,20 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
-
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const routes = require('./routes')
 require('./config/mongoose')
 
 const app = express()
-const port = 3000
+const PORT = process.env.PORT
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
@@ -36,6 +38,6 @@ app.use((req, res, next) => {
 })
 app.use(routes)
 
-app.listen(port, () => {
-  console.log(`The server is running on http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`The server is running on http://localhost:${PORT}`)
 })
