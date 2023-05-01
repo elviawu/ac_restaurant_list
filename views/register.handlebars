@@ -9,15 +9,15 @@
           <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" {{ name }}>
         </div>
         <div class="mb-3">
-          <label for="email" class="mb-2">Email</label>
+          <label for="email" class="mb-2">Email *</label>
           <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" {{ email }}>
         </div>
         <div class="mb-3">
-          <label for="password" class="mb-2">Password</label>
+          <label for="password" class="mb-2">Password *</label>
           <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" {{ password }}>
         </div>
         <div class="mb-3">
-          <label for="confirmPassword" class="mb-2">Confirm Password</label>
+          <label for="confirmPassword" class="mb-2">Confirm Password *</label>
           <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm Password" {{ confirmPassword }}>
         </div>
         <div class="d-grid gap-2">
@@ -28,6 +28,7 @@
       <p class="lead mt-4">
         Have An Account? <a href="/users/login">Login</a>
       </p>
+      <p class="lead" style="font-size: 16px">* 欄位為必填</p>
     </div>
   </div>
 </div>
