@@ -18,7 +18,7 @@ router.post('/register', (req, res) => {
   // 取得註冊表單參數
   const { name, email, password, confirmPassword } = req.body
   const errors = [] //蒐集flash訊息
-  if (!name || !email || !password || !confirmPassword) {
+  if ( !email || !password || !confirmPassword) {
     errors.push({ message: '所有欄位都是必填。' })
   }
   if (password !== confirmPassword) {
